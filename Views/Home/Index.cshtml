@@ -1,0 +1,145 @@
+﻿<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p class="site-title">
+                <a href="~/">ASP.NET Web API</a></p>
+        </div>
+    </div>
+</header>
+<div id="body">
+    <ul id="User"></ul>
+    <form id="saveExpenseForm" method="post" enctype="multipart/form-data" >
+        <h3>Create a new User</h3>
+    <p>
+        <label for="email">Email:</label>
+        <input type="text" name="email" />
+    </p>
+    
+    <p>
+        <label for="EID">EID:</label>
+        <input type="number" name="EID" />
+    </p>
+    <p>
+        <label for="title">title:</label>
+        <input type="text" name="title" />
+    </p>
+    <p>
+        <label for="note">note:</label>
+        <input type="text" name="note" />
+    </p>
+    <p>
+        <label for="ammount">ammount:</label>
+        <input type="number" name="ammount" />
+    </p>
+    <p>
+        <label for="date">date:</label>
+        <input type="datetime" name="date" />
+    </p>
+    <p>
+        <label for="tags">tags:</label>
+        <input type="text" name="tags" />
+    </p>
+    <p>
+        <label for="image1">image1:</label>
+        <input type="number" name="image1" />
+    </p>
+        <p>
+        <label for="image2">image2:</label>
+        <input type="number" name="image2" />
+    </p>
+        <p>
+        <label for="type">type:</label>
+        <input type="text" name="type" />
+    </p>
+    <p>
+        
+        <label for="photo">Image File</label>
+        <input name="photo" type="file" />
+    
+    </p>
+    <input type="button" id="saveExpense" value="Save" />
+    </form>
+    <form id="saveExpenseForm1" method="post" enctype="multipart/form-data" action="api/Expense/PostFile" >
+        <h3>Create a new User</h3>
+        <p>
+            <label for="email">Email:</label>
+            <input type="text" name="email" />
+        </p>
+        <p>
+        
+        <label for="photo">Image File</label>
+        <input name="photo" type="file" />
+    
+    </p>
+    <input type="submit" id="saveExpense1" value="Save" />
+    </form>
+    <img id="image" src="~/Images/heroAccent.png" />
+    <div id="images">
+
+    </div>
+</div>
+@section scripts{
+<script type="text/javascript">
+    $(function()
+    {
+       // alert("y");
+        var User = {
+            email: "waqas.jamil47@gmail.com"
+        };
+        $.getJSON('/api/Expense/Get',User, function (sd)
+            {
+                
+                
+              //  alert(sd.toString());
+                $.each(sd, function (i, item) {
+                    $('#User').append('<li>' + item.type + '</li>');
+                });
+               
+        });
+        
+        var User1 = {
+            email: "waqas.jamil47@gmail.com",
+            photo: "ice_cream.jpg"
+        };
+        
+        $.ajax({
+            type: "GET",
+
+            url: "api/Expense/GetImage",
+            data: User1,
+            dataType: false,
+            success: function (data) {
+                alert("ok1");
+                $('#images').html(data);
+                
+                alert("ok2");
+            },
+            error :function (err) { alert(err.statusText+"899")}
+
+        });
+        //$.getJSON('/api/Expense/GetImage', User1, function (sd) {
+        //    alert("ok");
+        //    $('#images').html('"<img src="'+sd+'" />');
+        //});
+    });
+
+    $('#saveExpense').click(function () {
+
+        var mydata = $("#saveExpenseForm").serialize();
+        alert("A");
+        $.ajax({
+            type: "POST",
+
+            url: "api/Expense/Expensesave",
+            data: mydata,
+            dataType: "json",
+            success: function (data) {
+                alert(data);
+            }
+
+        });
+        alert("A");
+    });
+  
+</script>
+}
