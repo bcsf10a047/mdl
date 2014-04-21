@@ -102,21 +102,21 @@
             photo: "ice_cream.jpg"
         };
         
-        $.ajax({
-            type: "GET",
+        //$.ajax({
+        //    type: "GET",
 
-            url: "api/Expense/GetImage",
-            data: User1,
-            dataType: false,
-            success: function (data) {
-                alert("ok1");
-                $('#images').html(data);
+        //    url: "api/Expense/GetImage",
+        //    data: User1,
+        //    dataType: false,
+        //    success: function (data) {
+        //        alert("ok1");
+        //        $('#images').html(data);
                 
-                alert("ok2");
-            },
-            error :function (err) { alert(err.statusText+"899")}
+        //        alert("ok2");
+        //    },
+        //    error :function (err) { alert(err.statusText+"899")}
 
-        });
+        //});
         //$.getJSON('/api/Expense/GetImage', User1, function (sd) {
         //    alert("ok");
         //    $('#images').html('"<img src="'+sd+'" />');
