@@ -8,6 +8,14 @@
 </header>
 <div id="body">
     <ul id="User"></ul>
+    <form id="createUser" method="post"  >
+        <h3>Create a new User</h3>
+        <p>
+            <label for="email">Email:</label>
+            <input type="text" name="email" />
+        </p>
+        <input type="button" id="create" value="Save" />
+    </form>
     <form id="saveExpenseForm" method="post" enctype="multipart/form-data" >
         <h3>Create a new User</h3>
     <p>
@@ -86,13 +94,13 @@
         var User = {
             email: "waqas.jamil47@gmail.com"
         };
-        $.getJSON('/api/Expense/Get',User, function (sd)
+        $.getJSON('/api/User/Get',User, function (sd)
             {
                 
                 
               //  alert(sd.toString());
                 $.each(sd, function (i, item) {
-                    $('#User').append('<li>' + item.type + '</li>');
+                    $('#User').append('<li>' + item.email + '</li>');
                 });
                
         });
@@ -122,11 +130,21 @@
         //    $('#images').html('"<img src="'+sd+'" />');
         //});
     });
-
+    $('#create').click(function () {
+        $.ajax({
+            type: "POST",
+            url: "api/User/save",
+            data: $("#createUser").serialize(),
+            dataTpe: "json",
+            success: function (data) {
+                alert(data);
+            }
+        });
+    });
     $('#saveExpense').click(function () {
 
         var mydata = $("#saveExpenseForm").serialize();
-        alert("A");
+        
         $.ajax({
             type: "POST",
 
