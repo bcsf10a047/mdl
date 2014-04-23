@@ -88,6 +88,15 @@
 </div>
 @section scripts{
 <script type="text/javascript">
+    $('#create').click(function () {
+        $.post('/api/User/save', $("#createUser").serialize(), function (item)
+        {
+            
+                $('#User').append('<li>' + item.email + '</li>');
+            
+        });
+    });
+        
     $(function()
     {
        // alert("y");
@@ -130,17 +139,7 @@
         //    $('#images').html('"<img src="'+sd+'" />');
         //});
     });
-    $('#create').click(function () {
-        $.ajax({
-            type: "POST",
-            url: "api/User/save",
-            data: $("#createUser").serialize(),
-            dataTpe: "json",
-            success: function (data) {
-                alert(data);
-            }
-        });
-    });
+    
     $('#saveExpense').click(function () {
 
         var mydata = $("#saveExpenseForm").serialize();
