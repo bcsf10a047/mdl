@@ -139,17 +139,17 @@
         //    $('#images').html('"<img src="'+sd+'" />');
         //});
     });
-    
+   
     $('#saveExpense').click(function () {
 
         var mydata = $("#saveExpenseForm").serialize();
         
         $.ajax({
-            type: "POST",
+            type: 'POST',
 
-            url: "api/Expense/Expensesave",
+            url: 'api/Expense/Expensesave',
             data: mydata,
-            dataType: "json",
+            dataType: 'json',
             success: function (data) {
                 alert(data);
             }
