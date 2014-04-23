@@ -67,11 +67,15 @@
     </p>
     <input type="button" id="saveExpense" value="Save" />
     </form>
-    <form id="saveExpenseForm1" method="post" enctype="multipart/form-data" action="api/Expense/PostFile" >
+    <form id="saveExpenseForm1" method="post" enctype="multipart/form-data" action="/api/Expense/PostFile" >
         <h3>Create a new User</h3>
         <p>
             <label for="email">Email:</label>
             <input type="text" name="email" />
+        </p>
+        <p>
+            <label for="id">id: </label>
+            <input type="number" name="id" />
         </p>
         <p>
         
