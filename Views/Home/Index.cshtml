@@ -139,24 +139,30 @@
         //    $('#images').html('"<img src="'+sd+'" />');
         //});
     });
-   
     $('#saveExpense').click(function () {
+        $.post('api/Expense/Expensesave', $("#saveExpenseForm").serialize(), function (item) {
 
-        var mydata = $("#saveExpenseForm").serialize();
-        
-        $.ajax({
-            type: 'POST',
-
-            url: 'api/Expense/Expensesave',
-            data: mydata,
-            dataType: 'json',
-            success: function (data) {
-                alert(data);
-            }
+            alert(data);
 
         });
-        alert("A");
     });
+    //$('#saveExpense').click(function () {
+
+    //    var mydata = $("#saveExpenseForm").serialize();
+        
+    //    $.ajax({
+    //        type: "POST",
+
+    //        url: "api/Expense/Expensesave",
+    //        data: mydata,
+    //        dataType: "json",
+    //        success: function (data) {
+    //            alert(data);
+    //        }
+
+    //    });
+    //    alert("A");
+    //});
   
 </script>
 }
