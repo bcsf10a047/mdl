@@ -144,7 +144,7 @@
         //});
     });
     $('#saveExpense').click(function () {
-        $.post('/api/Expense/Expensedelete', $("#saveExpenseForm").serialize(), function (item) {
+        $.post('/api/Expense/Expensesave', $("#saveExpenseForm").serialize(), function (item) {
 
             alert(data);
 
